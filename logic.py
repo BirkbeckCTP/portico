@@ -78,7 +78,7 @@ def get_best_portico_xml_galley(article, galleys):
         public=True,
     ).order_by('-file__date_uploaded')
 
-    if article.render_galley:
+    if article.render_galley and article.render_galley.file.mime_type in files.XML_MIMETYPES:
         return article.render_galley
 
     if xml_galleys:
